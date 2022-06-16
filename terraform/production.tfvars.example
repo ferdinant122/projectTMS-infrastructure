@@ -1,0 +1,10 @@
+digitalocean_token = "your_token_here"
+
+cluster_name = "dk-project-1"
+cluster_version = "1.22.8-do.1"
+region = "fra11"
+letsencrypt_email = "dimakorp@gmail.com"
+top_level_domains = [
+  "dk.test1.karzhel.net",
+  "dk.test2.karzhel.net",
+]
