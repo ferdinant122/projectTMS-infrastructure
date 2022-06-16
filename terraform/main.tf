@@ -1,21 +1,38 @@
-data "digitalocean_kubernetes_versions" "dkproject" {
-  version_prefix = "1.22."
+terraform {
+  required_providers {
+    digitalocean = {
+      source = "digitalocean/digitalocean"
+      version = "~> 2.0"
+    }
+    kubernetes = {
+      source = "hashicorp/kubernetes"
+      version = ">= 2.0.0"
+    }
+    helm = {
+      source  = "hashicorp/helm"
+      version = ">= 2.0.1"
+    }
+  }
 }
 
-resource "digitalocean_kubernetes_cluster" "dkcluster" {
-  name         = "dkcluster"
-  region       = "fra1"
-  auto_upgrade = true
-  version      = data.digitalocean_kubernetes_versions.example.latest_version
+provider "digitalocean" {
+  token = var.digitalocean_token
+}
 
-  maintenance_policy {
-    start_time  = "04:00"
-    day         = "sunday"
-  }
+provider "kubernetes" {
+  host    = digitalocean_kubernetes_cluster.default_cluster.endpoint
+  token   = digitalocean_kubernetes_cluster.default_cluster.kube_config[0].token
+  cluster_ca_certificate = base64decode(
+    digitalocean_kubernetes_cluster.default_cluster.kube_config[0].cluster_ca_certificate
+  )
+}
 
-  node_pool {
-    name       = "default"
-    size       = "s-1vcpu-2gb"
-    node_count = 3
+provider "helm" {
+  kubernetes {
+    host  = digitalocean_kubernetes_cluster.default_cluster.endpoint
+    token = digitalocean_kubernetes_cluster.default_cluster.kube_config[0].token
+    cluster_ca_certificate = base64decode(
+      digitalocean_kubernetes_cluster.default_cluster.kube_config[0].cluster_ca_certificate
+    )
   }
 }
