@@ -1,5 +1,5 @@
 variable "do_token" {
-  default = ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+  default = "dop_v1_587ed131ae530fd7060ab61ef602cf562d713976f7285bcf06004733c165515d"
 }
 
 variable "region" {
