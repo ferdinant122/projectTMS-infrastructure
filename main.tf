@@ -1,5 +1,5 @@
 provider "digitalocean"{
-  token = var.do_token
+  token = var.token
 }
 
 resource "digitalocean_kubernetes_cluster" "kubernetes_cluster" {
@@ -13,8 +13,9 @@ resource "digitalocean_kubernetes_cluster" "kubernetes_cluster" {
   node_pool {
     name       = var.k8s_poolname
     size       = "s-2vcpu-2gb"
-    auto_scale = false
-    node_count = var.k8s_count
+    auto_scale = true
+    min_nodes  = 1
+    max_nodes  = 5
     tags       = ["node-pool-tag"]
   }
 
@@ -24,12 +25,6 @@ output "cluster-id" {
   value = digitalocean_kubernetes_cluster.kubernetes_cluster.id
 }
 
-resource "digitalocean_droplet" "web" {
-  name   = "web-1"
-  size   = "s-1vcpu-1gb"
-  image  = "ubuntu-20-04-x64"
-  region = "fra1"
-}
 
 resource "digitalocean_loadbalancer" "public" {
   name   = "loadbalancer-1"
