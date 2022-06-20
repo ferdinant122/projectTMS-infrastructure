@@ -23,6 +23,10 @@ variable region {
 variable top_level_domains {
   description = "Top level domains to create records and pods for"
   type    = list(string)
+  default = [
+  "dk1.test.karzhel.net",
+  "dk2.test.karzhel.net",
+] 
 }
 
 variable letsencrypt_email {
