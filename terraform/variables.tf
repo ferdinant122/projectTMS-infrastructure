@@ -20,18 +20,6 @@ variable region {
   default     = "fra1"
 }
 
-variable top_level_domains {
-  description = "Top level domains to create records and pods for"
-  type    = list(string)
-  default = [
-  "dk1.test.karzhel.net",
-  "dk2.test.karzhel.net",
-] 
-}
-
-variable letsencrypt_email {
-  type = string
-}
 
 variable min_nodes {
   description = "The minimum number of nodes in the default pool"
