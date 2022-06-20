@@ -1,5 +1,5 @@
 provider "digitalocean"{
-  token = var.dotoken
+  token = var.do_token
 }
 
 resource "digitalocean_kubernetes_cluster" "kubernetes_cluster" {
