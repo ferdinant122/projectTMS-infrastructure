@@ -17,7 +17,7 @@ variable cluster_version {
 variable region {
   description = "The digital ocean region slug for where to create resources"
   type        = string
-  default     = "tor1"
+  default     = "fra1"
 }
 
 variable top_level_domains {
@@ -38,7 +38,7 @@ variable min_nodes {
 variable max_nodes {
   description = "The maximum number of nodes in the default pool"
   type        = number
-  default     = 3
+  default     = 5
 }
 
 variable default_node_size {
