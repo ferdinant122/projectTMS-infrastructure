@@ -39,6 +39,7 @@ resource "digitalocean_kubernetes_cluster" "k8s" {
 resource "digitalocean_loadbalancer" "public" {
   name   = "loadbalancer-dk"
   region = "fra1"
+}
 
   forwarding_rule {
     entry_port     = 80
