@@ -1,6 +1,6 @@
 resource "digitalocean_kubernetes_cluster" "dk-cluster" {
-  name   = var.cluster_name
-  region = var.region
+  name    = var.cluster_name
+  region  = var.region
   version = var.cluster_version
   node_pool {
     name       = "${var.cluster_name}-default-pool"

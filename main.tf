@@ -5,7 +5,7 @@ terraform {
       version = ">= 2.4.0"
     }
     kubernetes = {
-      source = "hashicorp/kubernetes"
+      source  = "hashicorp/kubernetes"
       version = ">= 2.7.0"
     }
     helm = {
@@ -20,8 +20,8 @@ provider "digitalocean" {
 }
 
 provider "kubernetes" {
-  host    = digitalocean_kubernetes_cluster.default_cluster.endpoint
-  token   = digitalocean_kubernetes_cluster.default_cluster.kube_config[0].token
+  host  = digitalocean_kubernetes_cluster.default_cluster.endpoint
+  token = digitalocean_kubernetes_cluster.default_cluster.kube_config[0].token
   cluster_ca_certificate = base64decode(
     digitalocean_kubernetes_cluster.default_cluster.kube_config[0].cluster_ca_certificate
   )

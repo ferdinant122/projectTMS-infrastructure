@@ -1,7 +1,7 @@
 resource "digitalocean_loadbalancer" "ingress_load_balancer" {
-  name   = "${var.cluster_name}-lb"
-  region = var.region
-  size = "lb-small"
+  name      = "${var.cluster_name}-lb"
+  region    = var.region
+  size      = "lb-small"
   algorithm = "round_robin"
 
   forwarding_rule {
@@ -14,8 +14,8 @@ resource "digitalocean_loadbalancer" "ingress_load_balancer" {
   }
 
   lifecycle {
-      ignore_changes = [
-        forwarding_rule,
+    ignore_changes = [
+      forwarding_rule,
     ]
   }
 
