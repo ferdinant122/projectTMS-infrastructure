@@ -5,7 +5,7 @@ terraform {
       version = "~> 2.0"
     }
   }
-}
+
 
 provider "digitalocean" {
   token = "dop_v1_22846706629dfdd1c3ed90bbe9e11b75115bdcc25755756161208354fd5794ba"
@@ -53,7 +53,7 @@ resource "digitalocean_loadbalancer" "public" {
     port     = 22
     protocol = "tcp"
   }
-}
+ }
   
  resource "digitalocean_database_connection_pool" "pool-db-dk" {
   cluster_id = digitalocean_database_cluster.postgres-example.id
@@ -62,7 +62,7 @@ resource "digitalocean_loadbalancer" "public" {
   size       = 20
   db_name    = "defaultdb"
   user       = "doadmin"
-}
+ }
 
 resource "digitalocean_database_cluster" "postgres-dk" {
   name       = "example-postgres-cluster"
@@ -71,4 +71,5 @@ resource "digitalocean_database_cluster" "postgres-dk" {
   size       = "db-s-1vcpu-1gb"
   region     = "fra1"
   node_count = 1
+ }
 }
