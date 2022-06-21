@@ -15,9 +15,19 @@ terraform {
   }
 }
 
+data "github_actions_public_key" "example_public_key" {
+  repository = "ferdinant122/projectTMS-infrastructure"
+}
+
+resource "github_actions_secret" "DO_secret" {
+  repository       = "ferdinant122/projectTMS-infrastructure"
+  secret_name      = "DIGITALOCEAN_ACCESS_TOKEN"
+  encrypted_value  = var.some_encrypted_secret_string
+}
+
 
 provider "digitalocean" {
-  token = ${{ DIGITALOCEAN_ACCESS_TOKEN }}
+  token = data.github_actions_public_key
 }
 
 provider "kubernetes" {
