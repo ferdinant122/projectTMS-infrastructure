@@ -1,31 +1,38 @@
 terraform {
   required_providers {
     digitalocean = {
-      source  = "digitalocean/digitalocean"
+      source = "digitalocean/digitalocean"
       version = "~> 2.0"
+    }
+    kubernetes = {
+      source = "hashicorp/kubernetes"
+      version = ">= 2.0.0"
+    }
+    helm = {
+      source  = "hashicorp/helm"
+      version = ">= 2.0.1"
     }
   }
 }
 
 provider "digitalocean" {
-  token = "dop_v1_4a2d38233587c1574a2eb9925af81b0d618a0ef50f150e1406ed87930e3a8f2c"
+  token = "dop_v1_a646007ad3cf582104095dd658e221dcb5dd86d546abcce9f4ffe445ecd37b4c"
 }
 
-resource "digitalocean_kubernetes_cluster" "dk-cluster" {
-  name   = "dk-cluste"
-  region = "fra1"
-  # Grab the latest version slug from `doctl kubernetes options versions`
-  version = "1.22.8-do.1"
+provider "kubernetes" {
+  host    = digitalocean_kubernetes_cluster.default_cluster.endpoint
+  token   = digitalocean_kubernetes_cluster.default_cluster.kube_config[0].token
+  cluster_ca_certificate = base64decode(
+    digitalocean_kubernetes_cluster.default_cluster.kube_config[0].cluster_ca_certificate
+  )
+}
 
-  node_pool {
-    name       = "dk-worker-pool"
-    size       = "s-2vcpu-2gb"
-    node_count = 3
-
-    taint {
-      key    = "workloadKind"
-      value  = "database"
-      effect = "NoSchedule"
-    }
+provider "helm" {
+  kubernetes {
+    host  = digitalocean_kubernetes_cluster.default_cluster.endpoint
+    token = digitalocean_kubernetes_cluster.default_cluster.kube_config[0].token
+    cluster_ca_certificate = base64decode(
+      digitalocean_kubernetes_cluster.default_cluster.kube_config[0].cluster_ca_certificate
+    )
   }
 }
