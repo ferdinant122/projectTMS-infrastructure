@@ -3,7 +3,7 @@ This is an example repository that uses terraform to spin up a Digital Ocean kub
 
 
 
-# Installation
+## Installation
 You must have your name servers pointed to digital ocean. After that, run the following and fill in the variables to provision the servers.
 
 ```bash
