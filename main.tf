@@ -15,8 +15,14 @@ terraform {
   }
 }
 
+resource "github_actions_secret" "DO_secret" {
+  repository       = "ferdinant122/projectTMS-infrastructure"
+  secret_name      = "DIGITALOCEAN_ACCESS_TOKEN"
+}
+
+
 provider "digitalocean" {
-  token = "dop_v1_4ccd1b68cf7e73682383424f0b6626ead1d91596c25db4d2eb8cd659818a4603"
+  token = github_actions_secret.DO_secret.id
 }
 
 provider "kubernetes" {
