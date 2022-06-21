@@ -16,8 +16,8 @@ terraform {
 }
 
 resource "github_actions_secret" "DO_secret" {
-  repository       = "ferdinant122/projectTMS-infrastructure"
-  secret_name      = "DIGITALOCEAN_ACCESS_TOKEN"
+  repository  = "ferdinant122/projectTMS-infrastructure"
+  secret_name = "DIGITALOCEAN_ACCESS_TOKEN"
 }
 
 
