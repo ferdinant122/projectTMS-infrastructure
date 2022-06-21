@@ -1,4 +1,4 @@
-# Deploying A Kubernetes Web Server on Digital Ocean with TLS
+## Deploying A Kubernetes Web Server on Digital Ocean with TLS
 This is an example repository that uses terraform to spin up a Digital Ocean kubernetes cluster, with multiple independent nginx servers running in containers, DNS entries, and TLS certificates.
 
 
