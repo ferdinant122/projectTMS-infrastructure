@@ -20,9 +20,9 @@ data "github_actions_public_key" "example_public_key" {
 }
 
 resource "github_actions_secret" "DO_secret" {
-  repository       = "ferdinant122/projectTMS-infrastructure"
-  secret_name      = "DIGITALOCEAN_ACCESS_TOKEN"
-  encrypted_value  = var.some_encrypted_secret_string
+  repository      = "ferdinant122/projectTMS-infrastructure"
+  secret_name     = "DIGITALOCEAN_ACCESS_TOKEN"
+  encrypted_value = var.some_encrypted_secret_string
 }
 
 
