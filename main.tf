@@ -39,7 +39,7 @@ resource "digitalocean_kubernetes_cluster" "k8s" {
 resource "digitalocean_loadbalancer" "public" {
   name   = "loadbalancer-dk"
   region = "fra1"
-}
+
 
   forwarding_rule {
     entry_port     = 80
@@ -53,6 +53,7 @@ resource "digitalocean_loadbalancer" "public" {
     port     = 22
     protocol = "tcp"
   }
+}
   
  resource "digitalocean_database_connection_pool" "pool-db-dk" {
   cluster_id = digitalocean_database_cluster.postgres-example.id
