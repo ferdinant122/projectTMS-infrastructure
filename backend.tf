@@ -1,7 +1,7 @@
-  backend "remote" {
-    organization = "dktmsprojecte"
+backend "remote" {
+  organization = "dktmsprojecte"
 
-    workspaces {
-      prefix = "dktmsproject-dev"
-    }
+  workspaces {
+    prefix = "dktmsproject-dev"
   }
+}
