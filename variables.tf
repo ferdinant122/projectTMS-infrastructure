@@ -1,7 +1,6 @@
 variable "cluster_name" {
   description = "The name of the kubernetes cluster to create"
   type        = string
-  default     = "test-cluster"
 }
 
 variable "cluster_version" {
