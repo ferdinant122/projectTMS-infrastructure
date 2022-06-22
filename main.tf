@@ -17,7 +17,7 @@ terraform {
     organization = "dktmsproject"
 
     workspaces {
-      prefix = "dktmsproject-"
+      name = "dktmsproject-dev"
     }
   }
 }
