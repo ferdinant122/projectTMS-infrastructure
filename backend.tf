@@ -3,6 +3,5 @@
 
     workspaces {
       prefix = "dktmsproject-dev"
-      prefix = "dktmsproject-prod"
     }
   }
