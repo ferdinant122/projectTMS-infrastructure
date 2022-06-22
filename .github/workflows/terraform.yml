@@ -29,6 +29,12 @@ jobs:
       - name: Terraform Init
         id: init
         run: terraform init
+        env:
+          TF_WORKSPACE: "dev"
+
+      - name: Terraform Workspace
+        id: workspace
+        run: terraform workspace select dev
       
       - name: Terraform Validate
         id: validate
