@@ -3,11 +3,11 @@ name: "Terraform"
 on:
   push:
     branches:
-     - dev  
-     - main
+     - dev1  
+     - main1
   pull_request:
     branches:
-     - main
+     - main1
       
 jobs:
   terraform:
