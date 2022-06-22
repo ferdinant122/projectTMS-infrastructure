@@ -30,8 +30,8 @@ jobs:
       - name: Terraform Init
         id: init
         run: terraform init
-        env:
-          TF_WORKSPACE: "prod"
+     #   env:
+     #    TF_WORKSPACE: "prod"
 
       - name: Terraform Workspace
         id: workspace
