@@ -13,6 +13,11 @@ terraform {
       version = ">= 2.0.1"
     }
   }
+  backend "remote" {
+    organization = "dktmsproject "
+
+    workspaces {
+      prefix = "my-app-"
 }
 
 
