@@ -20,20 +20,14 @@ provider "digitalocean" {
   token = var.do_token
 }
 
-provider "kubernetes" {
-  host  = digitalocean_kubernetes_cluster.dk-cluster.endpoint
-  token = digitalocean_kubernetes_cluster.dk-cluster.kube_config[0].token
-  cluster_ca_certificate = base64decode(
-    digitalocean_kubernetes_cluster.dk-cluster.kube_config[0].cluster_ca_certificate
-  )
-}
-
 provider "helm" {
   kubernetes {
-    host  = digitalocean_kubernetes_cluster.dk-cluster.endpoint
-    token = digitalocean_kubernetes_cluster.dk-cluster.kube_config[0].token
-    cluster_ca_certificate = base64decode(
-      digitalocean_kubernetes_cluster.dk-cluster.kube_config[0].cluster_ca_certificate
-    )
+    config_path = "~/.kube/config"
+  }
+}
+
+provider "kubectl" {
+  kubernetes {
+    config_path = "~/.kube/config"
   }
 }
