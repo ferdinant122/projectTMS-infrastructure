@@ -53,7 +53,7 @@ Steps:
 
 - In first step need to choise Type of workspace. I choise ```Version Control Workflow```
 
-![alt text](images/TF_Cloud_connect.png "TF_Cloud_connect")
+![alt text](images/TF_Cloud_CW.png "TF_Cloud_CW")
 
 
 - Second step connect to github account and choise a repo, my repo is ``` https://github.com/ferdinant122/projectTMS-infrastructure ```
