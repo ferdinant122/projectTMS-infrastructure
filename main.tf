@@ -12,10 +12,6 @@ terraform {
       source  = "hashicorp/helm"
       version = ">= 2.4.1"
     }
-        random = {
-      source  = "hashicorp/random"
-      version = "3.1.2"
-    }
   }
 }
 
@@ -33,8 +29,11 @@ provider "kubernetes" {
 }
 
 provider "helm" {
-  # Several Kubernetes authentication methods are possible: https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs#authentication
   kubernetes {
-    config_path = pathexpand(var.kube_config)
+    host  = digitalocean_kubernetes_cluster.dk-cluster.endpoint
+    token = digitalocean_kubernetes_cluster.dk-cluster.kube_config[0].token
+    cluster_ca_certificate = base64decode(
+      digitalocean_kubernetes_cluster.dk-cluster.kube_config[0].cluster_ca_certificate
+    )
   }
 }
