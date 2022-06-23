@@ -6,14 +6,19 @@ terraform {
     }
     kubernetes = {
       source  = "hashicorp/kubernetes"
-      version = ">= 2.7.0"
+      version = ">= 2.9.0"
     }
     helm = {
       source  = "hashicorp/helm"
-      version = ">= 2.0.1"
+      version = ">= 2.4.1"
+    }
+        random = {
+      source  = "hashicorp/random"
+      version = "3.1.2"
     }
   }
 }
+
 
 provider "digitalocean" {
   token = var.do_token

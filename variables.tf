@@ -32,3 +32,12 @@ variable "do_token" {
   description = "Token for access Digital Ocean"
   type        = string
 }
+variable "kube_config" {
+  type    = string
+  default = "~/.kube/config"
+}
+
+variable "namespace" {
+  type    = string
+  default = "monitoring"
+}
