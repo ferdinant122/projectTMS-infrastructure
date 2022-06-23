@@ -3,7 +3,7 @@
 
 
 
-## Scheme
+## Scheme 
 
 This is a simple scheme of CD/CI infrasructure on DigitalOcean
 
