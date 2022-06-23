@@ -25,7 +25,11 @@ provider "digitalocean" {
 }
 
 provider "kubernetes" {
-  config_path = pathexpand(var.kube_config)
+  host  = digitalocean_kubernetes_cluster.default_cluster.endpoint
+  token = digitalocean_kubernetes_cluster.default_cluster.kube_config[0].token
+  cluster_ca_certificate = base64decode(
+    digitalocean_kubernetes_cluster.default_cluster.kube_config[0].cluster_ca_certificate
+  )
 }
 
 provider "helm" {
